@@ -44,7 +44,7 @@ class NetModel:
 
 
         for l_num in range(1,len(self.layers)):
-            self.parameters["w"+str(l_num)] = np.random.uniform(-1,1,size=(self.layers[l_num],self.layers[l_num-1]))*0.01 #dont forget to *0.01
+            self.parameters["w"+str(l_num)] = np.random.randn(self.layers[l_num],self.layers[l_num-1])*np.sqrt(2/self.layers[l_num-1]) #He initialization
             self.parameters["b"+str(l_num)] = np.zeros((self.layers[l_num],1))
             self.parameters["ac"+str(l_num)] = self.activations[l_num] if l_num in self.activations.keys() else None
 
